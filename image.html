@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery Preview</title>
+<style>
+  body {
+    font-family: Arial;
+    background: linear-gradient(to bottom right, #ebf8ff, #fff0f6); 
+    padding: 40px;
+    text-align: center;
+  }
+  #main-container {
+    background-color: #ffe6f2; 
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 30px;
+  }
+
+  #gallery-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  #preview {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+
+  #thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .thumb {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .thumb:hover {
+    transform: scale(1.05);
+    border-color: #3182ce; 
+ }
+
+  .selected {
+    border-color: #3182ce;
+  }
+</style>
+</head>
+<body>
+
+<div id="main-container">
+  <h1>Image Gallery</h1>
+  <p>Click a thumbnail to preview</p>
+
+  <div id="gallery-container">
+    <img id="preview" src="https://picsum.photos/id/1011/800/400" alt="Preview Image">
+    <div id="thumbnails"></div>
+  </div>
+</div>
+
+<script>
+  const images = [
+    { src: 'https://picsum.photos/id/1011/800/400', thumb: 'https://picsum.photos/id/1011/100/70' },
+    { src: 'https://picsum.photos/id/1015/800/400', thumb: 'https://picsum.photos/id/1015/100/70' },
+    { src: 'https://picsum.photos/id/1025/800/400', thumb: 'https://picsum.photos/id/1025/100/70' },
+    { src: 'https://picsum.photos/id/1033/800/400', thumb: 'https://picsum.photos/id/1033/100/70' }
+  ];
+
+  const preview = document.getElementById('preview');
+  const thumbnailsDiv = document.getElementById('thumbnails');
+
+  images.forEach((img, idx) => {
+    const thumb = document.createElement('img');
+    thumb.src = img.thumb;
+    thumb.className = 'thumb';
+    if(idx === 0) thumb.classList.add('selected');
+    thumb.onclick = () => {
+      preview.src = img.src;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('selected'));
+      thumb.classList.add('selected');
+    };
+    thumbnailsDiv.appendChild(thumb);
+  });
+</script>
+
+</body>
+</html>
