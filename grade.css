@@ -43,7 +43,11 @@ button {
 button:hover {
   background-color: #45a049; 
 }
-
+#result {
+  color: #111; 
+  font-weight: bold;
+  margin-top: 20px;
+}
 
 
 
