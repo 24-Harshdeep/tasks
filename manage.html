@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body { font-family: Arial; 
+        background: linear-gradient(to bottom right, #ebf8ff, #faf5ff);
+         padding: 20px;
+        display:flex;
+        flex-direction: column; 
+        align-items: center;}
+    h1 { text-align: center; 
+        color: #333; 
+        margin-bottom: 10px; }
+    p { text-align: center;
+         color: #666;
+          margin-bottom: 30px; }
+    .buttons { display: flex; 
+        flex-wrap: wrap;
+         gap: 15px;
+          justify-content: center; 
+          margin-bottom: 30px; }
+    button { padding: 12px 24px;
+         border: none;
+          border-radius: 12px;
+           color: white; 
+           font-weight: 500; 
+           cursor: pointer; 
+           transition: transform 0.2s, box-shadow 0.2s; }
+    button:hover { transform: scale(1.05); 
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+    .blue { background: linear-gradient(to right, #4299e1, #3182ce); }
+    .green { background: linear-gradient(to right, #48bb78, #38a169); }
+    .purple { background: linear-gradient(to right, #9f7aea, #805ad5); }
+    .employee { padding: 12px; 
+        margin-bottom: 10px; 
+        border-radius: 10px;
+         background: #f9fafb; }
+    .highlight { background: linear-gradient(to right, #faf5ff, #fff0f6); 
+        padding: 20px; 
+        border-radius: 14px; 
+        text-align: center; }
+    .highlight span { font-size: 24px; 
+        font-weight: bold; 
+        color: #6b46c1; }
+    .output{
+         background-color: white;
+         width:500px;
+         padding:30px;
+         border-radius: 10px;
+         display:none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let h1=document.createElement("h1");
+        h1.textContent="🏢 Employee Manager";
+
+        let p=document.createElement("p")
+        p.textContent="Manage your workforce with ease";
+
+        let div=document.createElement("div");
+        div.className="buttons"
+        document.body.append(h1,p,div)
+
+        let button1=document.createElement("button");
+        button1.className="blue"
+        button1.onclick=()=>render("names")
+        button1.textContent="Show Names"
+        let button2=document.createElement("button");
+        button2.className="green"
+        button2.onclick=()=>render("filter")
+        button2.textContent="Filter Salary"
+        let button3=document.createElement("button");
+        button3.onclick=()=>render("total")
+        button3.textContent="Total Salary"
+        button3.className="purple";
+        
+        div.append(button1,button2,button3)
+
+        const employees=[
+            { name: "John Doe", age: 28, salary: 50000 },
+            { name: "Jane Smith", age: 32, salary: 65000 },
+            { name: "Mike Johnson", age: 26, salary: 45000 },
+            { name: "Sarah Wilson", age: 30, salary: 35000 },
+            { name: "David Brown", age: 35, salary: 70000 }
+                ];
+        let output=document.createElement("div");
+        output.className="output"
+        document.body.appendChild(output);
+        function render(type){
+            output.style.display="block";
+           if(type==="names"){
+            output.innerHTML=`<h3>👥 All Employee Names</h3>`+
+             employees.map(e =>
+             `<div class="employee">👤 ${e.name}</div>`).join("");
+           }
+           else if(type==="filter"){
+            output.innerHTML=  "<h3>💼 Employees with Salary &gt; ₹40,000</h3>"+
+            employees.filter(e=>e.salary>40000)  
+                     .map(e =>
+                         `<div class="employee">
+                                <div>👤 <strong>Name:</strong> ${e.name}</div>
+                                <div>🎂 <strong>Age:</strong> ${e.age}</div>
+                                <div>💰 <strong>Salary:</strong> ₹${e.salary.toLocaleString()}</div>
+                              </div>`).join("");
+            }
+            else if(type === 'total') {
+            const total = employees.reduce((sum, e) => sum + e.salary, 0);
+            output.innerHTML = `<h3>💼 Total Salary Expense</h3>
+            <div class="highlight">
+                <div style="font-size:40px;">💰</div>
+                <span>₹${total.toLocaleString()}</span>
+                <div>Total for ${employees.length} employees</div>
+            </div>`;
+        }
+        }
+    </script>
+</body>
+</html>

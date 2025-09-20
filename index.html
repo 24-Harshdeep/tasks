@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Dashboard</title>
+<style>
+  body { 
+    font-family: Arial; 
+    background: linear-gradient(to bottom right, #ebf8ff, #fff0f6); 
+    padding: 40px; 
+    text-align: center;
+  }
+  h1 { color: #333; margin-bottom: 20px; }
+  .buttons { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+    margin-bottom: 40px; 
+  }
+  a.button, button { 
+    padding: 16px 28px; 
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 600; 
+    color: white; 
+    cursor: pointer; 
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  a.button:hover, button:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
+  }
+  .blue { background: linear-gradient(to right, #4299e1, #3182ce); }
+  .pink { background: linear-gradient(to right, #fbb6ce, #ed64a6); }
+  .green { background: linear-gradient(to right, #48bb78, #38a169); }
+  .yellow { background: linear-gradient(to right, #eff0af, #dddf94); }
+
+  #content { 
+    max-width: 800px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border-radius: 16px; 
+    background: rgba(255,255,255,0.95); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    text-align: left; 
+  }
+</style>
+</head>
+<body>
+
+<h1>🏢 Project Dashboard</h1>
+<p>Select a project to view:</p>
+
+<div class="buttons">
+  <a href="manage.html" class="button blue">Employee Manager</a>
+  <a href="fetch.html" class="button pink">Fetch Users</a>
+  <a href="list.html" class="button green">My List</a>
+  <a href="log.html" class="button yellow">My Keylogger </a>
+</div>
+
+</body>
+</html>
