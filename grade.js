@@ -6,7 +6,7 @@ document.body.innerHTML = `
   <input type="number" placeholder="Marks 4"><br>
   <input type="number" placeholder="Marks 5"><br>
   <button>Calculate Grade</button>
-  <p></p>
+  <p id="result"></p>
 `;
 
 const inputs = document.querySelectorAll("input");
